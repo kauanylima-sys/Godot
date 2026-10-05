@@ -1,6 +1,8 @@
 extends Area2D
 
+@export_file("*.tscn") var proxima_fase: String = ""   # opcional: se vazio, usa a próxima numérica
 @export var jogadores_necessarios := 1
+@export var tempo_vitoria := 1.5
 
 var jogadores: Array = []
 var venceu := false
@@ -21,6 +23,22 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	jogadores.erase(body)
+
+
+# Descobre o caminho da próxima fase: Fase_1.tscn -> Fase_2.tscn
+func _achar_proxima_fase() -> String:
+	if proxima_fase != "":
+		return proxima_fase
+
+	var atual = get_tree().current_scene.scene_file_path   # ex: res://Fase_1.tscn
+	var regex = RegEx.new()
+	regex.compile("(\\d+)(\\.tscn)$")
+	var m = regex.search(atual)
+	if m == null:
+		return ""
+
+	var numero = int(m.get_string(1)) + 1
+	return atual.substr(0, m.get_start(1)) + str(numero) + ".tscn"
 
 
 func _mostrar_vitoria() -> void:
@@ -45,3 +63,20 @@ func _mostrar_vitoria() -> void:
 
 	get_tree().current_scene.add_child(camada)
 	get_tree().paused = true
+
+	# o timer ignora a pausa
+	await get_tree().create_timer(tempo_vitoria, true).timeout
+
+	# despausar antes de trocar, senão a próxima fase começa travada
+	get_tree().paused = false
+
+	var destino = _achar_proxima_fase()
+	print("Portal: indo para '", destino, "'")
+
+	if destino == "" or not ResourceLoader.exists(destino):
+		push_error("Portal: cena não encontrada: '" + destino + "'. Escolha a fase no Inspetor.")
+		return
+
+	var erro = get_tree().change_scene_to_file(destino)
+	if erro != OK:
+		push_error("Portal: erro ao trocar de cena, código: " + str(erro))

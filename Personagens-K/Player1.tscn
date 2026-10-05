@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://2so3pq2fuj0b"]
+
+[ext_resource type="Texture2D" uid="uid://s4g1qq2eayr3" path="res://Atv_jogo/assets/Sprite Pack 8/1 - Toggle/Idle (32 x 32).png" id="2_epypp"]
+[ext_resource type="Texture2D" uid="uid://28vlmhjojg7y" path="res://Atv_jogo/assets/Sprite Pack 8/1 - Toggle/Run (32 x 32).png" id="3_0hol4"]
+
+[sub_resource type="GDScript" id="GDScript_5pxne"]
+script/source = "extends CharacterBody2D
+# velocidade e pulo
+const SPEED = 150.0
+const JUMP = -300.0
+const LIMITE_QUEDA = 800.0
+# ataque
+var atacando = false
+# morte e reaparecer
+var morto = false
+var posicao_inicial: Vector2
+
+func _ready():
+	posicao_inicial = global_position
+	# conecta o sinal pelo código (não conecte também pela janela de sinais)
+	$AnimatedSprite2D.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+
+func _physics_process(delta):
+	# gravidade
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# pular com seta para cima ou Espaço
+	if (Input.is_action_just_pressed(\"ui_up\") or Input.is_action_just_pressed(\"ui_accept\")) and is_on_floor():
+		velocity.y = JUMP
+
+	# andar com as setas
+	var dir = Input.get_axis(\"ui_left\", \"ui_right\")
+	velocity.x = dir * SPEED
+
+	move_and_slide()
+
+	# checa se encostou nos espinhos
+	for i in get_slide_collision_count():
+		var colisao = get_slide_collision(i)
+		var objeto = colisao.get_collider()
+		if objeto != null and objeto.name == \"Espinhos\":
+			morrer()
+
+	# checa se caiu da fase
+	if global_position.y > LIMITE_QUEDA:
+		morrer()
+
+	if dir != 0:
+		$AnimatedSprite2D.flip_h = dir < 0
+
+	# animações
+	if not atacando:
+		if dir != 0:
+			$AnimatedSprite2D.play(\"Andar\")
+		else:
+			$AnimatedSprite2D.play(\"Parado\")
+
+func morrer():
+	if morto:
+		return
+	morto = true
+	set_physics_process(false)
+	$AnimatedSprite2D.stop()
+	await get_tree().create_timer(0.5).timeout
+	global_position = posicao_inicial
+	velocity = Vector2.ZERO
+	atacando = false
+	morto = false
+	set_physics_process(true)
+
+# personagem depois do ataque
+func _on_animated_sprite_2d_animation_finished():
+	atacando = false
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
+atlas = ExtResource("2_epypp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
+atlas = ExtResource("2_epypp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
+atlas = ExtResource("2_epypp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
+atlas = ExtResource("2_epypp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
+atlas = ExtResource("2_epypp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d7sh"]
+atlas = ExtResource("3_0hol4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir8iy"]
+atlas = ExtResource("3_0hol4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqns4"]
+atlas = ExtResource("3_0hol4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0ka3"]
+atlas = ExtResource("3_0hol4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h7mo"]
+atlas = ExtResource("3_0hol4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr8wp"]
+atlas = ExtResource("3_0hol4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r516b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hol4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6r6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdubu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d21ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj586")
+}],
+"loop": 1,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d7sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir8iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqns4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0ka3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h7mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr8wp")
+}],
+"loop": 1,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_inqft"]
+radius = 6.0
+height = 18.0
+
+[node name="Player1" type="CharacterBody2D" unique_id=1408120833]
+position = Vector2(-2, -12)
+script = SubResource("GDScript_5pxne")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=970047307]
+sprite_frames = SubResource("SpriteFrames_r516b")
+animation = &"Run"
+autoplay = "Hurt"
+frame_progress = 0.6402339
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=951900422]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_inqft")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1184453397]

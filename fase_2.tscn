@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://chvr7x7n7q8th"]
 
 [ext_resource type="PackedScene" uid="uid://2so3pq2fuj0b" path="res://node_2d.tscn" id="1_4823c"]
-[ext_resource type="Texture2D" uid="uid://cobu0qynlyemh" path="res://Atv_jogo/assets/Seasonal Tilesets/props_realistas/props_realistas/Terrain_Rosa__16_x_16_.png" id="2_iolds"]
-[ext_resource type="Texture2D" uid="uid://dpdm2g8hh4n8e" path="res://Atv_jogo/assets/Seasonal Tilesets/props_realistas/props_realistas/capim.png" id="3_u0tcw"]
-[ext_resource type="Texture2D" uid="uid://b7vpwj18nm6pk" path="res://Atv_jogo/assets/Seasonal Tilesets/props_realistas/props_realistas/espinhos_ferro_largo.png" id="4_2am8a"]
+[ext_resource type="Texture2D" uid="uid://c8nvts5urs6tf" path="res://Atv_jogo/assets/Seasonal Tilesets/props_realistas/props_realistas/Terrain_Rosa__16_x_16_.png" id="2_iolds"]
+[ext_resource type="Texture2D" uid="uid://ci5h354mhrey1" path="res://Atv_jogo/assets/Seasonal Tilesets/props_realistas/props_realistas/capim.png" id="3_u0tcw"]
+[ext_resource type="Texture2D" uid="uid://g7rl2kg8awyr" path="res://Atv_jogo/assets/Seasonal Tilesets/props_realistas/props_realistas/espinhos_ferro_largo.png" id="4_2am8a"]
 [ext_resource type="PackedScene" uid="uid://ccjnl4b0kfy1k" path="res://portal.tscn" id="5_cjr2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tggv0"]
