@@ -1,3 +1,4 @@
+[gd_scene format=3 uid="uid://btm7apea75doi"]
 
 [ext_resource type="Script" uid="uid://cuihvimswvp8v" path="res://portal.gd" id="1_jl8kn"]
 [ext_resource type="Texture2D" uid="uid://bqif3a1hf6iue" path="res://assets/portal (Unzipped Files)-20260929T105252Z-1-001/portal (Unzipped Files)/frame-1.png" id="2_3x30s"]

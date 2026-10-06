@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cy0ecatbgd0yn"
-path="res://.godot/imported/Tropics_entities (16 x 16).png-113bc2359856773bdfb95313b66e1d9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
-
-source_file="res://assets/TileMapFase2/Tropics_entities (16 x 16).png"
-dest_files=["res://.godot/imported/Tropics_entities (16 x 16).png-113bc2359856773bdfb95313b66e1d9b.ctex"]
 
 [params]
 

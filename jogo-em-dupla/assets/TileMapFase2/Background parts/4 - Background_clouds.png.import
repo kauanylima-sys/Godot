@@ -3,15 +3,12 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://iira3kwkqyh8"
-path="res://.godot/imported/4 - Background_clouds.png-c13f37fee04f97cfc56d70aa38de801b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TileMapFase2/Background parts/4 - Background_clouds.png"
-dest_files=["res://.godot/imported/4 - Background_clouds.png-c13f37fee04f97cfc56d70aa38de801b.ctex"]
 
 [params]
 

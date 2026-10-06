@@ -3,16 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d37tpbqmem5r2"
-path="res://.godot/imported/5 - Sky_color.png-92c4e5c8bb6f735b283be348ae7a7cdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
-
-source_file="res://assets/TileMapFase2/Background parts/5 - Sky_color.png"
-dest_files=["res://.godot/imported/5 - Sky_color.png-92c4e5c8bb6f735b283be348ae7a7cdf.ctex"]
-
 [params]
 
 compress/mode=0

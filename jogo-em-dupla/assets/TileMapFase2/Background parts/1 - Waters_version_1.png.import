@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgbolqcssb4gv"
-path="res://.godot/imported/1 - Waters_version_1.png-9c5e022075b6545a4259f94d7225281b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
-
-source_file="res://assets/TileMapFase2/Background parts/1 - Waters_version_1.png"
-dest_files=["res://.godot/imported/1 - Waters_version_1.png-9c5e022075b6545a4259f94d7225281b.ctex"]
 
 [params]
 

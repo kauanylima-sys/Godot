@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3u8owiu8ohfk"]
 
 [ext_resource type="Script" uid="uid://b2yfynw1woofw" path="res://node_2d.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://mgikd5cnn3lj" path="res://Atv_jogo/assets/Sprite Pack 8/5 - Vessa/andar_32x32_sheet.png" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://blav0vgkl2mar" path="res://Atv_jogo/assets/Sprite Pack 8/5 - Vessa/andar_32x32_sheet.png" id="2_i3pqv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dnfrp"]
 radius = 9.0
@@ -85,4 +85,4 @@ sprite_frames = SubResource("SpriteFrames_gyu4y")
 animation = &"Andar"
 frame_progress = 0.5249439
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1808241363]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1592759451]

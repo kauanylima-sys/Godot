@@ -3,16 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dugqhvc67ck55"
-path="res://.godot/imported/Terrain (16 x 16).png-6cec0ee46e6c9931e306995f246754cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
-
-source_file="res://assets/TileMapFase2/Terrain (16 x 16).png"
-dest_files=["res://.godot/imported/Terrain (16 x 16).png-6cec0ee46e6c9931e306995f246754cc.ctex"]
-
 [params]
 
 compress/mode=0
